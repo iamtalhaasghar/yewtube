@@ -26,6 +26,11 @@ Installation
 2.  Install `yewtube` using `pipx install git+https://github.com/iamtalhaasghar/yewtube.git`
 3.  Now, type `yt` That's it.
 
+## Terminal Colors on Windows (Optional)
+Install **_colorama_**
+- For **_pip_**, simply use `pip install colorama`
+- For **_pipx_**, use `pipx runpip yewtube install colorama`
+
 What's new in yewtube?
 ----------------------
 -   **No Youtube API Key required**
