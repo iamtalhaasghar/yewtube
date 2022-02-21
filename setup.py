@@ -42,11 +42,12 @@ options = dict(
             "PyGObject>=3.42.0",
         ],
         "docs": [
-            "mkdocstrings>=0.18.0",
-            "mkdocs-material>=8.2.1",
-            "mkdocs-macros-plugin>=0.6.4",
             "mkdocs-gen-files>=0.3.4",
             "mkdocs-literate-nav>=0.4.1",
+            "mkdocs-macros-plugin>=0.6.4",
+            "mkdocs-material>=8.2.1",
+            "mkdocstrings-python-legacy>=0.2.2",
+            "mkdocstrings>=0.18.0",
         ],
     },
     classifiers=[
