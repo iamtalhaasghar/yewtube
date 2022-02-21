@@ -41,6 +41,13 @@ options = dict(
             "dbus-python>=1.2.18",
             "PyGObject>=3.42.0",
         ],
+        "docs": [
+            "mkdocstrings>=0.18.0",
+            "mkdocs-material>=8.2.1",
+            "mkdocs-macros-plugin>=0.6.4",
+            "mkdocs-gen-files>=0.3.4",
+            "mkdocs-literate-nav>=0.4.1",
+        ],
     },
     classifiers=[
         "Topic :: Utilities",
