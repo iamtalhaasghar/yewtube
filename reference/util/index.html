@@ -1,0 +1,2877 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Terminal based YouTube player and downloader.">
+      
+      
+      
+        <link rel="canonical" href="https://iamtalhaasghar.github.io/yewtube/reference/util/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.1">
+    
+    
+      
+        <title>util.py - Yewtube</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e8d9bf0c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mps_youtube.util" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yewtube" class="md-header__button md-logo" aria-label="Yewtube" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yewtube
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              util.py
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/iamtalhaasghar/yewtube/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    iamtalhaasghar/yewtube
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../__init__/" class="md-tabs__link md-tabs__link--active">
+        Code Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contributing/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yewtube" class="md-nav__button md-logo" aria-label="Yewtube" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Yewtube
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/iamtalhaasghar/yewtube/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    iamtalhaasghar/yewtube
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Code Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          mps_youtube
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="mps_youtube" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          mps_youtube
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../__init__/" class="md-nav__link">
+        __init__.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c/" class="md-nav__link">
+        c.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        cache.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" type="checkbox" id="__nav_2_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_4">
+          commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="commands" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          commands
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/__init__/" class="md-nav__link">
+        __init__.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/album_search/" class="md-nav__link">
+        album_search.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/config/" class="md-nav__link">
+        config.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/download/" class="md-nav__link">
+        download.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/generate_playlist/" class="md-nav__link">
+        generate_playlist.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/lastfm/" class="md-nav__link">
+        lastfm.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/local_playlist/" class="md-nav__link">
+        local_playlist.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/misc/" class="md-nav__link">
+        misc.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/play/" class="md-nav__link">
+        play.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/search/" class="md-nav__link">
+        search.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/songlist/" class="md-nav__link">
+        songlist.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/spotify_playlist/" class="md-nav__link">
+        spotify_playlist.py
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../content/" class="md-nav__link">
+        content.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contentquery/" class="md-nav__link">
+        contentquery.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../description_parser/" class="md-nav__link">
+        description_parser.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../g/" class="md-nav__link">
+        g.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helptext/" class="md-nav__link">
+        helptext.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/" class="md-nav__link">
+        history.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../init/" class="md-nav__link">
+        init.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_12" type="checkbox" id="__nav_2_1_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_12">
+          listview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="listview" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_12">
+          <span class="md-nav__icon md-icon"></span>
+          listview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listview/__init__/" class="md-nav__link">
+        __init__.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listview/base/" class="md-nav__link">
+        base.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listview/livestream/" class="md-nav__link">
+        livestream.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listview/songtitle/" class="md-nav__link">
+        songtitle.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listview/user/" class="md-nav__link">
+        user.py
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../main/" class="md-nav__link">
+        main.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pafy/" class="md-nav__link">
+        pafy.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paths/" class="md-nav__link">
+        paths.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../player/" class="md-nav__link">
+        player.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_17" type="checkbox" id="__nav_2_1_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_17">
+          players
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="players" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_17">
+          <span class="md-nav__icon md-icon"></span>
+          players
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/GenericPlayer/" class="md-nav__link">
+        GenericPlayer.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/__init__/" class="md-nav__link">
+        __init__.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/mplayer/" class="md-nav__link">
+        mplayer.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/mpv/" class="md-nav__link">
+        mpv.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/vlc/" class="md-nav__link">
+        vlc.py
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playlist/" class="md-nav__link">
+        playlist.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../playlists/" class="md-nav__link">
+        playlists.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../screen/" class="md-nav__link">
+        screen.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../streams/" class="md-nav__link">
+        streams.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminalsize/" class="md-nav__link">
+        terminalsize.py
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          util.py
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        util.py
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util" class="md-nav__link">
+    mps_youtube.util
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.IterSlicer" class="md-nav__link">
+    IterSlicer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple" class="md-nav__link">
+    XYTuple
+  </a>
+  
+    <nav class="md-nav" aria-label="XYTuple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple.__getnewargs__" class="md-nav__link">
+    __getnewargs__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple.__new__" class="md-nav__link">
+    __new__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple.__repr__" class="md-nav__link">
+    __repr__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.F" class="md-nav__link">
+    F()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.correct_truncate" class="md-nav__link">
+    correct_truncate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.dbg" class="md-nav__link">
+    dbg()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.fmt_time" class="md-nav__link">
+    fmt_time()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.get_near_name" class="md-nav__link">
+    get_near_name()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.get_pafy" class="md-nav__link">
+    get_pafy()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.getxy" class="md-nav__link">
+    getxy()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.has_exefile" class="md-nav__link">
+    has_exefile()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.is_known_player" class="md-nav__link">
+    is_known_player()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.list_update" class="md-nav__link">
+    list_update()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.mswinfn" class="md-nav__link">
+    mswinfn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.number_string_to_list" class="md-nav__link">
+    number_string_to_list()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.parse_multi" class="md-nav__link">
+    parse_multi()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.parse_video_length" class="md-nav__link">
+    parse_video_length()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.real_len" class="md-nav__link">
+    real_len()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.sanitize_filename" class="md-nav__link">
+    sanitize_filename()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.set_window_title" class="md-nav__link">
+    set_window_title()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.uea_pad" class="md-nav__link">
+    uea_pad()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.utf8_replace" class="md-nav__link">
+    utf8_replace()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.xenc" class="md-nav__link">
+    xenc()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.xprint" class="md-nav__link">
+    xprint()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.yt_datetime" class="md-nav__link">
+    yt_datetime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.yt_datetime_local" class="md-nav__link">
+    yt_datetime_local()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util" class="md-nav__link">
+    mps_youtube.util
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.IterSlicer" class="md-nav__link">
+    IterSlicer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple" class="md-nav__link">
+    XYTuple
+  </a>
+  
+    <nav class="md-nav" aria-label="XYTuple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple.__getnewargs__" class="md-nav__link">
+    __getnewargs__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple.__new__" class="md-nav__link">
+    __new__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps_youtube.util.XYTuple.__repr__" class="md-nav__link">
+    __repr__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.F" class="md-nav__link">
+    F()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.correct_truncate" class="md-nav__link">
+    correct_truncate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.dbg" class="md-nav__link">
+    dbg()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.fmt_time" class="md-nav__link">
+    fmt_time()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.get_near_name" class="md-nav__link">
+    get_near_name()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.get_pafy" class="md-nav__link">
+    get_pafy()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.getxy" class="md-nav__link">
+    getxy()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.has_exefile" class="md-nav__link">
+    has_exefile()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.is_known_player" class="md-nav__link">
+    is_known_player()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.list_update" class="md-nav__link">
+    list_update()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.mswinfn" class="md-nav__link">
+    mswinfn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.number_string_to_list" class="md-nav__link">
+    number_string_to_list()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.parse_multi" class="md-nav__link">
+    parse_multi()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.parse_video_length" class="md-nav__link">
+    parse_video_length()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.real_len" class="md-nav__link">
+    real_len()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.sanitize_filename" class="md-nav__link">
+    sanitize_filename()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.set_window_title" class="md-nav__link">
+    set_window_title()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.uea_pad" class="md-nav__link">
+    uea_pad()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.utf8_replace" class="md-nav__link">
+    utf8_replace()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.xenc" class="md-nav__link">
+    xenc()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.xprint" class="md-nav__link">
+    xprint()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.yt_datetime" class="md-nav__link">
+    yt_datetime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps_youtube.util.yt_datetime_local" class="md-nav__link">
+    yt_datetime_local()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/iamtalhaasghar/yewtube/edit/master/docs/mps_youtube/util.py" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+
+  <h1>util.py</h1>
+
+<div class="doc doc-object doc-module">
+
+<a id="mps_youtube.util"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="mps_youtube.util.IterSlicer" class="doc doc-heading">
+        <code>
+IterSlicer        </code>
+
+
+
+<a href="#mps_youtube.util.IterSlicer" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Class that takes an iterable and allows slicing,
+loading from the iterable as needed.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">IterSlicer</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Class that takes an iterable and allows slicing,</span>
+<span class="sd">        loading from the iterable as needed.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ilist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterable</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">length</span>
+        <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sliced</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sliced</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">sliced</span><span class="o">.</span><span class="n">stop</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">sliced</span>
+        <span class="c1"># To get the last item in an iterable, must iterate over all items</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">stop</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">stop</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ilist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ilist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterable</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ilist</span><span class="p">[</span><span class="n">sliced</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[:])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="mps_youtube.util.XYTuple" class="doc doc-heading">
+        <code>
+XYTuple            (<span title="tuple">tuple</span>)
+        </code>
+
+
+
+<a href="#mps_youtube.util.XYTuple" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>XYTuple(width, height, max_results)</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="mps_youtube.util.XYTuple.__getnewargs__" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">__getnewargs__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#mps_youtube.util.XYTuple.__getnewargs__" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return self as a plain tuple.  Used by copy and pickle.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">__getnewargs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s1">&#39;Return self as a plain tuple.  Used by copy and pickle.&#39;</span>
+    <span class="k">return</span> <span class="n">_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="mps_youtube.util.XYTuple.__new__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__new__</span><span class="p">(</span><span class="n">_cls</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">max_results</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+      <small class="doc doc-property doc-property-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+<a href="#mps_youtube.util.XYTuple.__new__" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create new instance of XYTuple(width, height, max_results)</p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="mps_youtube.util.XYTuple.__repr__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#mps_youtube.util.XYTuple.__repr__" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a nicely formatted representation string</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s1">&#39;Return a nicely formatted representation string&#39;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="n">repr_fmt</span> <span class="o">%</span> <span class="bp">self</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.F" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">F</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">nb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">textlib</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.F" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Format text.</p>
+<p>:param nb: newline before
+:type nb: int
+:param na: newline after
+:type na: int
+:param textlib: the dictionary to use (defaults to g.text if not given)
+:type textlib: dict
+:returns: A string, potentially containing one or more %s
+:rtype: str</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">nb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">textlib</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Format text.</span>
+
+<span class="sd">    :param nb: newline before</span>
+<span class="sd">    :type nb: int</span>
+<span class="sd">    :param na: newline after</span>
+<span class="sd">    :type na: int</span>
+<span class="sd">    :param textlib: the dictionary to use (defaults to g.text if not given)</span>
+<span class="sd">    :type textlib: dict</span>
+<span class="sd">    :returns: A string, potentially containing one or more %s</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">textlib</span> <span class="o">=</span> <span class="n">textlib</span> <span class="ow">or</span> <span class="n">g</span><span class="o">.</span><span class="n">text</span>
+
+    <span class="k">assert</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">textlib</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">textlib</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="n">percent_fmt</span> <span class="o">=</span> <span class="n">textlib</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">percent_fmt</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\*&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">%</span> <span class="n">percent_fmt</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&amp;&amp;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="n">nb</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="n">na</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.correct_truncate" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">correct_truncate</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.correct_truncate" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Truncate a string taking into account East Asian width chars.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">correct_truncate</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">max_len</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Truncate a string taking into account East Asian width chars.&quot;&quot;&quot;</span>
+    <span class="n">str_len</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">str_len</span> <span class="o">+=</span> <span class="n">real_len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">str_len</span> <span class="o">&lt;=</span> <span class="n">max_len</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="n">c</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.dbg" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">dbg</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.dbg" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Emit a debug message.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Emit a debug message.&quot;&quot;&quot;</span>
+    <span class="c1"># Uses xenc to deal with UnicodeEncodeError when writing to terminal</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">xenc</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.fmt_time" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">fmt_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.fmt_time" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Format number of seconds to %H:%M:%S. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fmt_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Format number of seconds to %H:%M:%S. &quot;&quot;&quot;</span>
+    <span class="n">hms</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">seconds</span><span class="p">)))</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">hms</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">H</span> <span class="o">==</span> <span class="s2">&quot;00&quot;</span><span class="p">:</span>
+        <span class="n">hms</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">S</span>
+
+    <span class="k">elif</span> <span class="n">H</span> <span class="o">==</span> <span class="s2">&quot;01&quot;</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="n">hms</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">S</span>
+
+    <span class="k">elif</span> <span class="n">H</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">):</span>
+        <span class="n">hms</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">H</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">M</span><span class="p">,</span> <span class="n">S</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">hms</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.get_near_name" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_near_name</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.get_near_name" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the closest matching playlist name that starts with begin. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_near_name</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return the closest matching playlist name that starts with begin. &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">begin</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
+            <span class="k">return</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="n">begin</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.get_pafy" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_pafy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.get_pafy" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get pafy object for an item.</p>
+<p>:param item: video to retrieve
+:type item: :class:<code>mps_youtube.playlist.Video</code> or str
+:param force: ignore cache and retrieve anyway
+:type force: bool
+:param callback: callpack to pass to pafy
+:type callback: func
+:rtype: Pafy</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_pafy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get pafy object for an item.</span>
+
+<span class="sd">    :param item: video to retrieve</span>
+<span class="sd">    :type item: :class:`mps_youtube.playlist.Video` or str</span>
+<span class="sd">    :param force: ignore cache and retrieve anyway</span>
+<span class="sd">    :type force: bool</span>
+<span class="sd">    :param callback: callpack to pass to pafy</span>
+<span class="sd">    :type callback: func</span>
+<span class="sd">    :rtype: Pafy</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Video</span><span class="p">):</span>
+        <span class="n">ytid</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">ytid</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ytid</span> <span class="o">=</span> <span class="n">item</span>
+    <span class="n">callback_fn</span> <span class="o">=</span> <span class="n">callback</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">cached</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">pafs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ytid</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span> <span class="ow">and</span> <span class="n">cached</span> <span class="ow">and</span> <span class="n">cached</span><span class="o">.</span><span class="n">expiry</span> <span class="o">&gt;</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">():</span>
+        <span class="n">dbg</span><span class="p">(</span><span class="s2">&quot;get pafy cache hit for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cached</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">cached</span><span class="o">.</span><span class="n">fresh</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">cached</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="kc">None</span><span class="c1">#pafy.new(ytid, callback=callback_fn)</span>
+
+        <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="s2">&quot;pafy&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                <span class="n">dbg</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">p</span> <span class="o">+</span> <span class="s2">&quot;retrying failed pafy get: &quot;</span> <span class="o">+</span> <span class="n">ytid</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="kc">None</span><span class="c1">#pafy.new(ytid, callback=callback)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span>
+
+        <span class="n">g</span><span class="o">.</span><span class="n">pafs</span><span class="p">[</span><span class="n">ytid</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">fresh</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="s2">&quot;preload: &quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">callback</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">dbg</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">got new pafy object: </span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">thread</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="p">[:</span><span class="mi">26</span><span class="p">],</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
+        <span class="n">dbg</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">got new pafy object: </span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">thread</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">videoid</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">p</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.getxy" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">getxy</span><span class="p">()</span></code>
+
+
+<a href="#mps_youtube.util.getxy" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get terminal size, terminal width and max-results.</p>
+<p>:rtype: :class:<code>XYTuple</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getxy</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get terminal size, terminal width and max-results.</span>
+
+<span class="sd">    :rtype: :class:`XYTuple`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Import here to avoid circular dependency</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
+    <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">detectable_size</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">terminalsize</span><span class="o">.</span><span class="n">get_terminal_size</span><span class="p">()</span>
+        <span class="n">max_results</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">4</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">54</span> <span class="k">else</span> <span class="mi">50</span>
+        <span class="n">max_results</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="n">max_results</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">max_results</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">CONSOLE_WIDTH</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">MAX_RESULTS</span><span class="o">.</span><span class="n">get</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">max_results</span> <span class="o">+</span> <span class="mi">4</span>
+
+    <span class="k">return</span> <span class="n">XYTuple</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">max_results</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.has_exefile" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">has_exefile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.has_exefile" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Check whether file exists in path and is executable.</p>
+<p>:param filename: name of executable
+:type filename: str
+:returns: Path to file or False if not found
+:rtype: str or False</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">has_exefile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Check whether file exists in path and is executable.</span>
+
+<span class="sd">    :param filename: name of executable</span>
+<span class="sd">    :type filename: str</span>
+<span class="sd">    :returns: Path to file or False if not found</span>
+<span class="sd">    :rtype: str or False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()]</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PATH&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">)</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">paths</span> <span class="k">if</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">dbg</span><span class="p">(</span><span class="s2">&quot;searching path for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+        <span class="n">exepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">exepath</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">exepath</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">):</span>
+                <span class="n">dbg</span><span class="p">(</span><span class="s2">&quot;found at </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exepath</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">exepath</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.is_known_player" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">is_known_player</span><span class="p">(</span><span class="n">player</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.is_known_player" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return true if the set player is known. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_known_player</span><span class="p">(</span><span class="n">player</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return true if the set player is known. &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">allowed_player</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">playerargs_defaults</span><span class="p">:</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?:\b</span><span class="si">%s</span><span class="s1">($|\.[a-zA-Z0-9]+$))&#39;</span> <span class="o">%</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">allowed_player</span><span class="p">)</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">mswin</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">allowed_player</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.list_update" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">list_update</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.list_update" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Add or remove item from list, checking first to avoid exceptions. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">list_update</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Add or remove item from list, checking first to avoid exceptions. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">remove</span> <span class="ow">and</span> <span class="n">item</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">remove</span> <span class="ow">and</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.mswinfn" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">mswinfn</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.mswinfn" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Fix filename for Windows. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">mswinfn</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Fix filename for Windows. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mswin</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">utf8_replace</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">if</span> <span class="n">not_utf8_environment</span> <span class="k">else</span> <span class="n">filename</span>
+        <span class="n">allowed</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^</span><span class="se">\\</span><span class="s1">/?*$</span><span class="se">\&#39;</span><span class="s1">&quot;%&amp;:&lt;&gt;|]&#39;</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span> <span class="k">if</span> <span class="n">allowed</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;_&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filename</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.number_string_to_list" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">number_string_to_list</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.number_string_to_list" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Parses comma separated lists </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">number_string_to_list</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Parses comma separated lists &quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="k">if</span> <span class="s2">&quot;-&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">separated</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">separated</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">separated</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
+                <span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.parse_multi" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">parse_multi</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.parse_multi" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Handle ranges like 5-9, 9-5, 5- and -5 with optional repetitions number [n]</p>
+<p>eg. 2-4[2] is the same as 2 3 4 2 3 4 and 3[4] is 3 3 3 3</p>
+<p>Return list of ints.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_multi</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle ranges like 5-9, 9-5, 5- and -5 with optional repetitions number [n]</span>
+
+<span class="sd">    eg. 2-4[2] is the same as 2 3 4 2 3 4 and 3[4] is 3 3 3 3</span>
+
+<span class="sd">    Return list of ints.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">end</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">model</span><span class="p">))</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?&lt;![-\d\[\]])(\d+-\d+|-\d+|\d+-|\d+)(?:\[(\d+)\])?(?![-\d\[\]])&#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">choice</span><span class="p">)</span>
+    <span class="n">alltracks</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">nreps</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="c1"># nreps is in the inclusive range [1,100]</span>
+        <span class="n">nreps</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">nreps</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">nreps</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nreps</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span> <span class="o">+</span> <span class="n">x</span>
+
+            <span class="k">elif</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">):</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;-&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">nrange</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+                <span class="n">startend</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">nrange</span><span class="p">)</span>
+                <span class="n">alltracks</span> <span class="o">+=</span> <span class="n">_bi_range</span><span class="p">(</span><span class="o">*</span><span class="n">startend</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">alltracks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">alltracks</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.parse_video_length" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">parse_video_length</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.parse_video_length" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Converts HH:MM:SS to a single integer .i.e. total number of seconds</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_video_length</span><span class="p">(</span><span class="n">duration</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Converts HH:MM:SS to a single integer .i.e. total number of seconds</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">duration</span><span class="p">:</span>
+        <span class="n">duration_tokens</span> <span class="o">=</span> <span class="n">duration</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">duration_tokens</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_tokens</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">10</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.real_len" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">real_len</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.real_len" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Try to determine width of strings displayed with monospace font. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">real_len</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Try to determine width of strings displayed with monospace font. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+
+    <span class="n">u</span> <span class="o">=</span> <span class="n">xenc</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="c1"># Handle replacements of unsuported characters</span>
+
+    <span class="n">ueaw</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">east_asian_width</span>
+
+    <span class="k">if</span> <span class="n">alt</span><span class="p">:</span>
+        <span class="c1"># widths = dict(W=2, F=2, A=1, N=0.75, H=0.5)  # original</span>
+        <span class="n">widths</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span> <span class="n">Na</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">widths</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">W</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">H</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">widths</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ueaw</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">u</span><span class="p">)))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.sanitize_filename" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">sanitize_filename</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ignore_slashes</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.sanitize_filename" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Sanitize filename </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sanitize_filename</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ignore_slashes</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Sanitize filename &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ignore_slashes</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">macos</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mswin</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">utf8_replace</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">if</span> <span class="n">not_utf8_environment</span> <span class="k">else</span> <span class="n">filename</span>
+        <span class="n">allowed</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^</span><span class="se">\\</span><span class="s1">?*$</span><span class="se">\&#39;</span><span class="s1">&quot;%&amp;:&lt;&gt;|]&#39;</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span> <span class="k">if</span> <span class="n">allowed</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;_&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filename</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.set_window_title" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">set_window_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.set_window_title" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Set terminal window title. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">set_window_title</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set terminal window title. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mswin</span><span class="p">:</span>
+        <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">SetConsoleTitleW</span><span class="p">(</span><span class="n">xenc</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">xenc</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">]2;&#39;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\x07</span><span class="s1">&#39;</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.uea_pad" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">uea_pad</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">notrunc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.uea_pad" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Right pad with spaces taking into account East Asian width chars. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">uea_pad</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="n">notrunc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Right pad with spaces taking into account East Asian width chars. &quot;&quot;&quot;</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">direction</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;&lt;&quot;</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+
+    <span class="c1"># TODO: Find better way of dealing with this?</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">notrunc</span><span class="p">:</span>
+        <span class="c1"># Truncate to max of num characters</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">correct_truncate</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">real_len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+        <span class="n">spaces</span> <span class="o">=</span> <span class="n">num</span> <span class="o">-</span> <span class="n">real_len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="n">spaces</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="n">spaces</span><span class="p">)</span> <span class="o">+</span> <span class="n">t</span>
+
+        <span class="k">elif</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;^&quot;</span><span class="p">:</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">while</span> <span class="n">real_len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span> <span class="n">right</span> <span class="k">else</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">right</span>
+
+    <span class="k">return</span> <span class="n">t</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.utf8_replace" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">utf8_replace</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.utf8_replace" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Replace unsupported characters in unicode string.</p>
+<p>:param txt: text to filter
+:type txt: str
+:returns: Unicode text without any characters unsupported by locale
+:rtype: str</p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">utf8_replace</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace unsupported characters in unicode string.</span>
+
+<span class="sd">    :param txt: text to filter</span>
+<span class="sd">    :type txt: str</span>
+<span class="sd">    :returns: Unicode text without any characters unsupported by locale</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sse</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sse</span><span class="p">,</span> <span class="s2">&quot;replace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sse</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">txt</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.xenc" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">xenc</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.xenc" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Replace unsupported characters. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">xenc</span><span class="p">(</span><span class="n">stuff</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Replace unsupported characters. &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">utf8_replace</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span> <span class="k">if</span> <span class="n">not_utf8_environment</span> <span class="k">else</span> <span class="n">stuff</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.xprint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">xprint</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.xprint" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Compatible print. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">xprint</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Compatible print. &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">xenc</span><span class="p">(</span><span class="n">stuff</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.yt_datetime" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">yt_datetime</span><span class="p">(</span><span class="n">yt_date_time</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.yt_datetime" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a time object, locale formated date string and locale formatted time string. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">yt_datetime</span><span class="p">(</span><span class="n">yt_date_time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a time object, locale formated date string and locale formatted time string. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">yt_date_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;Unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">]</span>
+    <span class="n">time_obj</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">yt_date_time</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ&quot;</span><span class="p">)</span>
+    <span class="n">locale_date</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">time_obj</span><span class="p">)</span>
+    <span class="n">locale_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">time_obj</span><span class="p">)</span>
+    <span class="c1"># strip first two digits of four digit year</span>
+    <span class="n">short_date</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d\d\D\d\d\D)20(\d\d)$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1\2&quot;</span><span class="p">,</span> <span class="n">locale_date</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">time_obj</span><span class="p">,</span> <span class="n">short_date</span><span class="p">,</span> <span class="n">locale_time</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="mps_youtube.util.yt_datetime_local" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">yt_datetime_local</span><span class="p">(</span><span class="n">yt_date_time</span><span class="p">)</span></code>
+
+
+<a href="#mps_youtube.util.yt_datetime_local" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a datetime object, locale converted and formated date string and locale converted and formatted time string. </p>
+
+        <details class="quote">
+          <summary>Source code in <code>mps_youtube/util.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">yt_datetime_local</span><span class="p">(</span><span class="n">yt_date_time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a datetime object, locale converted and formated date string and locale converted and formatted time string. &quot;&quot;&quot;</span>
+    <span class="n">datetime_obj</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">yt_date_time</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ&quot;</span><span class="p">)</span>
+    <span class="n">datetime_obj</span> <span class="o">=</span> <span class="n">utc2local</span><span class="p">(</span><span class="n">datetime_obj</span><span class="p">)</span>
+    <span class="n">locale_date</span> <span class="o">=</span> <span class="n">datetime_obj</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%x</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">locale_time</span> <span class="o">=</span> <span class="n">datetime_obj</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%X</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># strip first two digits of four digit year</span>
+    <span class="n">short_date</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d\d\D\d\d\D)20(\d\d)$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1\2&quot;</span><span class="p">,</span> <span class="n">locale_date</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datetime_obj</span><span class="p">,</span> <span class="n">short_date</span><span class="p">,</span> <span class="n">locale_time</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../terminalsize/" class="md-footer__link md-footer__link--prev" aria-label="Previous: terminalsize.py" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              terminalsize.py
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8aa65030.min.js"></script>
+      
+    
+  </body>
+</html>
