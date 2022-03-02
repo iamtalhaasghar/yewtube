@@ -1,11 +1,20 @@
-from youtubesearchpython import *
-import yt_dlp, random, os, requests, json, re
+import json
+import os
+import random
+import re
+import typing as T
 from urllib.parse import parse_qs, urlparse
+
+import requests
+import yt_dlp
+from youtubesearchpython import *
+
+
 class MyLogger:
     def debug(self, msg):
         # For compatibility with youtube-dl, both debug and info are passed into debug
         # You can distinguish them by the prefix '[debug] '
-        if msg.startswith('[debug] '):
+        if msg.startswith("[debug] "):
             pass
         else:
             self.info(msg)
@@ -32,37 +41,43 @@ def get_video_streams(ytid):
 
 def download_video(ytid, folder):
 
-    '''
+    """
     Given a youtube video id and target folder, this function will download video to that folder
-    '''
+    """
 
-    ytdl_format_options = {
-        'outtmpl': os.path.join(folder, '%(title)s-%(id)s.%(ext)s')
-    }
+    ytdl_format_options = {"outtmpl": os.path.join(folder, "%(title)s-%(id)s.%(ext)s")}
 
     with yt_dlp.YoutubeDL(ytdl_format_options) as ydl:
-        ydl.download('https://www.youtube.com/watch?v=%s' % ytid)
+        ydl.download("https://www.youtube.com/watch?v=%s" % ytid)
         return True
 
-def search_videos(query, pages):
 
-    '''
-    Given a keyword / query this function will return youtube video results against those keywords / query
-    '''
+def search_videos(query: str, pages: int) -> list[T.Any]:
+    """Given a keyword / query this function will return youtube video results against those keywords / query
 
+    Args:
+        query: keyword query
+        pages: maximum page
+
+    Returns:
+        list of video data
+    """
+    # videosSearch.result will return (str | dict[Unknown, Unknown])
+    # but dict[str, Any] would be used
+    # therefore ignore the type for now
     videosSearch = VideosSearch(query, limit=50)
-    wdata = videosSearch.result()['result']
-    for i in range(pages-1):
+    wdata: list[T.Any] = videosSearch.result()["result"]  # type: ignore
+    for _ in range(pages - 1):
         videosSearch.next()
-        wdata.extend(videosSearch.result()['result'])
+        wdata.extend(videosSearch.result()["result"])  # type: ignore
     return wdata
 
 
 def channel_search(query):
 
-    '''
+    """
     Search channel based on keyword / query provided by user
-    '''
+    """
 
     channelsSearch = ChannelsSearch(query, limit=50, region='US')
     return channelsSearch.result()['result']
