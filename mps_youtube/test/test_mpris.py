@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 from unittest.mock import MagicMock
 
-import dbus
 import pytest
 
 from mps_youtube import mpris
+
+dbus = pytest.importorskip("pexpect")
 
 
 def test_mprsi2controller_init():
